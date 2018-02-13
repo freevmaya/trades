@@ -7,6 +7,7 @@ var locale = {
 	PANIKACTIVATE: 'Паническая кнопка активирована!',
 	BEGINTESTTITLE: 'Кнопка запускает тестовый проход, за выбранный на графике период',
 	TIMEFORMAT: 'HH:mm',
+	DATEFORMAT: 'd.M HH:mm',
 	WENTWRONG: 'Извините, но что то пошло не так.',
 	VLINE: {
 		buy: 'покупка',
@@ -23,6 +24,7 @@ var locale = {
 		below: 'цена ниже',
 		candle: 'свеча',
 		moods: 'настроение рынка',
+		obalance: 'баланс ордеров',
 		dev: 'пользовательские триггеры'
 	},
 	TGSCTRLS: {

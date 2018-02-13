@@ -48,6 +48,10 @@ function reset_pair(pair, sell_min, buy_max) {
     for (var i=0; i<pairListeners.length; i++) pairListeners[i](pair, sell_min, buy_max);
 }
 
+function timeFormat(unixt) {
+    return $.format.date(parseInt(unixt) * 1000, locale.DATEFORMAT);
+}
+
 function eventsSupport(uid, market, pair) {
     var pushstream = new PushStream({
         host: window.location.hostname,

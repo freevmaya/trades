@@ -396,7 +396,12 @@ Authors: Wandenberg Peixoto <wandenberg@gmail.com>, Rogério Carvalho Schneider 
   };
 
   var unescapeText = function(text) {
-    return (text) ? window.decodeURIComponent(text) : '';
+    try {
+      text = (text)?window.decodeURIComponent(text):'';
+    } catch (e) {
+      console.log(e.message || e.error);
+    }
+    return text;
   };
 
   Utils.parseMessage = function(messageText, keys) {
