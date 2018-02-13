@@ -1,0 +1,1083 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"time",
+				"times"
+			],
+			[
+				"tim",
+				"times"
+			],
+			[
+				"marker",
+				"markers"
+			],
+			[
+				"over",
+				"overflow"
+			],
+			[
+				"back",
+				"background"
+			],
+			[
+				"margin",
+				"margin-left"
+			],
+			[
+				"magin",
+				"margin-top"
+			],
+			[
+				"te",
+				"table-row"
+			],
+			[
+				"success",
+				"success_report"
+			],
+			[
+				"mar",
+				"margin-left"
+			],
+			[
+				"control",
+				"control_range"
+			],
+			[
+				"font-s",
+				"font-size"
+			],
+			[
+				"overf",
+				"overflow-y"
+			],
+			[
+				"про",
+				"продаж"
+			],
+			[
+				"api",
+				"api_name"
+			],
+			[
+				"js",
+				"json_encode"
+			],
+			[
+				"selec",
+				"select"
+			],
+			[
+				"b",
+				"inline-block"
+			],
+			[
+				"lis",
+				"list-style-type"
+			],
+			[
+				"bo",
+				"box-shadow"
+			],
+			[
+				"v",
+				"ui-icon-grip-dotted-vertical"
+			],
+			[
+				"jso",
+				"json_encode"
+			],
+			[
+				"json",
+				"getJSON"
+			],
+			[
+				"text",
+				"text-align"
+			],
+			[
+				"tra",
+				"transition"
+			],
+			[
+				"re",
+				"request"
+			],
+			[
+				"JSON",
+				"getJSON"
+			],
+			[
+				"p",
+				"padding"
+			],
+			[
+				"pass",
+				"password"
+			],
+			[
+				"pas",
+				"passw"
+			],
+			[
+				"inli",
+				"inline-block"
+			],
+			[
+				"le",
+				"length"
+			],
+			[
+				"json_",
+				"json_encode"
+			],
+			[
+				"g",
+				"gpos"
+			],
+			[
+				"fun",
+				"function"
+			],
+			[
+				"exmo",
+				"exmo_dataModule"
+			],
+			[
+				"t",
+				"tObj"
+			],
+			[
+				"print",
+				"print_r"
+			],
+			[
+				"con",
+				"console"
+			],
+			[
+				"exp",
+				"explode"
+			],
+			[
+				"tri",
+				"trigger_"
+			],
+			[
+				"is_str",
+				"is_string"
+			],
+			[
+				"is_nu",
+				"is_numeric"
+			],
+			[
+				"is_n",
+				"is_numeric"
+			],
+			[
+				"str_re",
+				"str_replace"
+			],
+			[
+				"create",
+				"createOrder"
+			],
+			[
+				"strto",
+				"strtotime"
+			],
+			[
+				"frame",
+				"frameIndex"
+			],
+			[
+				"for",
+				"for\tfor (…) {…}"
+			],
+			[
+				"et",
+				"ether"
+			],
+			[
+				"balance",
+				"balance"
+			],
+			[
+				"e",
+				"ether"
+			],
+			[
+				"retu",
+				"returns"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "index.php",
+			"settings":
+			{
+				"buffer_size": 6731,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/V/vmaya/games/include/_dbu.php",
+			"settings":
+			{
+				"buffer_size": 7094,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/V/cron/currency_dev/watch_test.php",
+			"settings":
+			{
+				"buffer_size": 2802,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/V/cron/currency_dev/modules/cur_watch.php",
+			"settings":
+			{
+				"buffer_size": 6237,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/V/cron/currency_dev/modules/dataModule.php",
+			"settings":
+			{
+				"buffer_size": 6464,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "modules/user_json.php",
+			"settings":
+			{
+				"buffer_size": 1994,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "modules/console.php",
+			"settings":
+			{
+				"buffer_size": 1285,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "themes/dark/style.css",
+			"settings":
+			{
+				"buffer_size": 9539,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "modules/watch_graph.php",
+			"settings":
+			{
+				"buffer_size": 13458,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "js/app.js",
+			"settings":
+			{
+				"buffer_size": 2633,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/V/cron/currency_dev/watch_dev.php",
+			"settings":
+			{
+				"buffer_size": 2205,
+				"line_ending": "Windows"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"console":
+	{
+		"height": 0.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/V/vmaya/trade",
+		"/V/cron/currency_dev",
+		"/V/cron/currency_dev/modules"
+	],
+	"file_history":
+	[
+		"/V/cron/currency_dev/include/utils.php",
+		"/D/install/Sony Vegas Pro 10.0e Build 737/Sony Vegas Pro 10.0e Build 737/Порядок установки.txt",
+		"/V/vmaya/trade/modules/watch_graph_json.php",
+		"/V/cron/currency_dev/modules/exmo_dataModule.php",
+		"/V/cron/currency/modules/dataModule.php",
+		"/V/cron/currency_dev/modules/dataModule.php",
+		"/V/cron/currency_dev/modules/cur_watch.php",
+		"/V/vmaya/trade/js/triggersCtrl.js",
+		"/V/cron/currency_dev/triggers/candleTrigger.php",
+		"/V/cron/currency_dev/watch_dev.php",
+		"/V/vmaya/trade/modules/watch_orders.php",
+		"/V/cron/currency_dev/modules/timeObject.php",
+		"/V/cron/currency_dev/watch_test.php",
+		"/V/vmaya/trade/js/order.js",
+		"/V/cron/currency_dev/triggers/baseTrigger.php",
+		"/V/cron/currency_dev/triggers/belowTrigger.php",
+		"/V/vmaya/trade/js/ru/locale.js",
+		"/V/vmaya/trade/modules/watch_graph.php",
+		"/V/cron/currency_dev/modules/sender.php",
+		"/D/documents/numbers.js",
+		"/C/Users/vmaya/Desktop/query_of.TXT",
+		"/V/vmaya/trade/js/app.js",
+		"/V/vmaya/trade/include/ru/locale.php",
+		"/V/vmaya/trade/modules/watch_orders_json.php",
+		"/V/vmaya/games/include/request.php",
+		"/V/vmaya/trade/include/request.php",
+		"/V/vmaya/trade/themes/dark/style.css",
+		"/V/vmaya/trade/pages/orders.php",
+		"/V/vmaya/trade/modules/top_toolbar.php",
+		"/V/vmaya/trade/js/utils.js",
+		"/V/cron/currency/modules/watchTrade.php",
+		"/V/vmaya/trade/js/tparams.js",
+		"/V/cron_engine.php",
+		"/V/vmaya/trade/index.php",
+		"/V/vmaya/trade/modules/sound.php",
+		"/V/cron/currency_dev/triggers/moodsTrigger.php",
+		"/V/vmaya/trade/modules/console.php",
+		"/V/vmaya/trade/modules/pairs.php",
+		"/V/cron/currency_dev/include/console.php",
+		"/V/vmaya/trade/pages/settings.php",
+		"/V/vmaya/trade/modules/user_json.php",
+		"/V/vmaya/trade/modules/mainmenu.php",
+		"/V/vmaya/trade/js/external_exmo.js",
+		"/V/vmaya/trade/js/triggers.js",
+		"/V/cron/currency_dev/get_exmo_trades.php",
+		"/V/cron/currency_dev/get_exmo_orders.php",
+		"/V/cron/currency_dev/triggers/limitTrigger.php",
+		"/V/cron/currency_dev/triggers/stopTrigger.php",
+		"/V/vmaya/trade/pages/calc.php",
+		"/V/cron/currency_dev/triggers/hignerTrigger.php",
+		"/V/cron/currency_dev/modules/exmo_sender.php",
+		"/V/cron/currency/data/watch_data_dev.json",
+		"/V/cron/currency/get_exmo_trades.php",
+		"/V/vmaya/trade/js/locale.js",
+		"/V/vmaya/trade/include/locale.php",
+		"/V/vmaya/trade/include/events.php",
+		"/V/cron/currency_dev/data/exmo_pairs.php",
+		"/H/numbers.js",
+		"/V/vmaya/trade/include/utils.php",
+		"/V/vmaya/trade/js/external.js",
+		"/V/cron/currency/watch_dev.php.log",
+		"/V/vmaya/trade/include/engine.php",
+		"/V/config_trade.php",
+		"/V/vmaya/trade/include/engine2.php",
+		"/V/vmaya/games/include/engine2.php",
+		"/H/krypts/blablabla.js",
+		"/V/vmaya/trade/js/pushstream.js",
+		"/V/vmaya/trade/include/courses.php",
+		"/V/vmaya/trade/index_dev.php",
+		"/C/Users/vmaya/Desktop/LINUX.txt",
+		"/X/vmaya/pj_ok/options.php",
+		"/X/config.php",
+		"/V/cron/currency/modules/exmo_sender.php",
+		"/V/cron/currency/data/watch_data.json",
+		"/V/cron/currency/get_exmo_orders.php",
+		"/V/vmaya/trade/themes/dark/jquery-ui.theme.min.css",
+		"/V/vmaya/comet/misc/nginx.conf",
+		"/V/vmaya/trade/modules/user_events_json.php",
+		"/X/vmaya/ss/helpers/templates.php",
+		"/X/vmaya/ss/ssconfig.php",
+		"/W/html/games/data/spot_storage.php",
+		"/X/vmaya/games/data/storage.json",
+		"/V/cron/currency_dev/watch_dev.php.log",
+		"/V/vmaya/trade/themes/silver/style.css",
+		"/V/cron/currency_dev/modules/volumes.php",
+		"/V/econfig.json",
+		"/C/WebServers/home/vmaya/games/include/_dbu.php",
+		"/V/vmaya/index.php",
+		"/V/cron/currency/modules/volumes.php",
+		"/V/vmaya/trade/modules/graph2.php",
+		"/V/vmaya/games/include/_dbu.php",
+		"/X/vmaya/games/include/_dbu.php",
+		"/V/vmaya/trade/modules/trade_graph_json.php",
+		"/V/vmaya/trade/modules/trades_json.php",
+		"/V/vmaya/trade/pages/login.php",
+		"/V/vmaya/trade/modules/trade_graph.php",
+		"/V/vmaya/trade/modules/autor.php",
+		"/V/vmaya/trade/modules/login.php",
+		"/V/vmaya/trade/js/md5-min.js",
+		"/C/Users/vmaya/AppData/Local/Temp/Rar$DRa0.929/components/md5.js",
+		"/V/vmaya/trade/modules/trade.php",
+		"/V/vmaya/trade/modules/login_json.php",
+		"/V/cron/currency/data/watch_data_dev - копия.json",
+		"/C/Users/vmaya/AppData/Local/Temp/Rar$DRa0.398/components/md5.js",
+		"/C/Users/vmaya/Downloads/2.5.3-crypto-md5.js",
+		"/V/vmaya/trade/js/hmac-sha512.js",
+		"/V/vmaya/trade/modules/orders.php",
+		"/V/cron/currency_dev/data/order_book.json",
+		"/V/cron/currency_dev/data/templates.json",
+		"/V/vmaya/trade/modules/graph2_json.php",
+		"/V/cron/currency_dev/data/watch_data_dev.json",
+		"/V/logs/errors.log",
+		"/V/cron/currency/data/watch_data - копия.json",
+		"/V/vmaya/trade/data/order_templates.json",
+		"/V/cron/currency/watch_dev.php",
+		"/V/vmaya/trade/themes/dark/jquery-ui.min.css",
+		"/V/vmaya/trade/dark-theme.css",
+		"/V/vmaya/trade/index.html",
+		"/C/WebServers/home/vmaya/games/include/_edbu2.php",
+		"/V/vmaya/games/include/_edbu.php",
+		"/V/vmaya/games/include/_edbu2.php",
+		"/V/vmaya/trade/style.css",
+		"/V/vmaya/trade/modules/graph_canvas.php",
+		"/V/vmaya/trade/js/graph_canvas.js",
+		"/V/vmaya/trade/js/graph.js",
+		"/V/vmaya/trade/js/vector.js",
+		"/V/cron/currency_dev/manual.txt",
+		"/V/cron/currency_dev/data/mysql_test.txt"
+	],
+	"find":
+	{
+		"height": 40.0
+	},
+	"find_in_files":
+	{
+		"height": 110.0,
+		"where_history":
+		[
+			"V:\\vmaya\\trade\\modules",
+			"V:\\vmaya\\trade\\js",
+			"V:\\vmaya\\trade\\modules",
+			"V:\\vmaya\\trade",
+			"V:\\cron\\currency_dev\\modules",
+			"V:\\vmaya\\trade",
+			"V:\\cron\\currency_dev",
+			""
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": true,
+		"find_history":
+		[
+			"method",
+			"refresh",
+			"kp",
+			"marker",
+			"tline",
+			"vline",
+			"offset",
+			"format",
+			"refresh",
+			"addMarker",
+			"addMarket",
+			"times",
+			"print_r",
+			"addMarket",
+			"addMarker",
+			"sell",
+			"marker",
+			"getCurrentOrderDB",
+			"cache_index",
+			"fullData",
+			"dataModule",
+			"fullCache",
+			"getCurrentTradeDB",
+			"pair",
+			"test",
+			"$db",
+			"mysqli",
+			"test_layer",
+			"test",
+			"test_layer",
+			"cur_avgprice",
+			"uid",
+			"market",
+			"test_layer",
+			"state",
+			"marker",
+			"serverTime",
+			"test_layer",
+			"markers",
+			"onUserEvents",
+			"chart_trades",
+			"markers",
+			"time",
+			"ORDERSUCCESS",
+			"cur_time",
+			"CHECKTIME",
+			"times",
+			"format",
+			"vline",
+			"line",
+			"onComplete",
+			"addUserEvent",
+			"ORDERSUCCESS",
+			"time",
+			"item_tmpl",
+			"worders",
+			"->time",
+			"state_time",
+			"footer",
+			"    /*padding: 2px 5px;*/\nitem_tmpl",
+			"item_tmpl",
+			"order_item",
+			"isprocess",
+			"createControl",
+			"getValue",
+			"refreshResult",
+			"pair",
+			"title",
+			"MARKETPAIRTRADES",
+			"info",
+			"order-type",
+			"new_order_form",
+			"tmpl",
+			"extends_layer",
+			"hiddePanel",
+			"ntc",
+			"height",
+			"triggerLayer",
+			"extends",
+			"triggers_layer",
+			"new-trigger",
+			"refre",
+			"drawAsLine",
+			"menu",
+			"info",
+			"    panel",
+			"top_toolbar",
+			"title",
+			"info",
+			"item_tmpl",
+			"order_item",
+			"i",
+			"rowselected",
+			"rowselect",
+			"selectprice",
+			"PRICE",
+			"drawAsCandle",
+			"secs",
+			"getCurrentTradeDB",
+			"getCurrentOrderDB",
+			"getCurrentTradeDB",
+			"maxval",
+			"curPrice",
+			"maxval",
+			"ctrlObj",
+			"return",
+			"trigger",
+			"tparams",
+			"refreshResult",
+			"refreshValues",
+			"createControl",
+			"trigger",
+			"_trades",
+			"graph",
+			"chart_trades",
+			"cookie",
+			"method",
+			"char",
+			"asLine",
+			"',\n",
+			"footer",
+			"console",
+			"JSON",
+			"templates",
+			"trigger_templates",
+			"event",
+			"fireEvent",
+			"SUCCESS"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"range",
+			"chart_trades",
+			"', '",
+			"$order",
+			"action",
+			"active",
+			"startTime",
+			"endTime",
+			"_data",
+			"ask",
+			"options"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 8,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "index.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 6731,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								979,
+								979
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 648.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 10,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "/V/vmaya/games/include/_dbu.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 7094,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2187,
+								2187
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 648.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 9,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "/V/cron/currency_dev/watch_test.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2802,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2636,
+								2636
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 486.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "/V/cron/currency_dev/modules/cur_watch.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 6237,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2213,
+								2213
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 432.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "/V/cron/currency_dev/modules/dataModule.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 6464,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1946,
+								1946
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 1188.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "modules/user_json.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1994,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1866,
+								1866
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 612.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 7,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "modules/console.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1285,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1109,
+								1109
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 8,
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "themes/dark/style.css",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 9539,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								9307,
+								9307
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/CSS/CSS.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 11892.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "modules/watch_graph.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 13458,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								8266,
+								8266
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 3300.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 9,
+					"file": "js/app.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2633,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								348,
+								348
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
+					"type": "text"
+				},
+				{
+					"buffer": 10,
+					"file": "/V/cron/currency_dev/watch_dev.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2205,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1364,
+								1395
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 486.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 30.0
+	},
+	"input":
+	{
+		"height": 39.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"output.unsaved_changes":
+	{
+		"height": 120.0
+	},
+	"pinned_build_system": "",
+	"project": "trade.sublime-project",
+	"replace":
+	{
+		"height": 72.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 240.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

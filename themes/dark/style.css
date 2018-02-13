@@ -1,0 +1,730 @@
+body {
+    font-family: Arial,Tahoma;
+    background-image: url(images/bg.jpg);
+    background-size: cover;
+    color: white;
+    margin: 0px;
+}
+
+.top_toolbar, .footer {
+    position: fixed;
+    left: 0px;
+    right: 0px;
+    background: #292a35;
+    box-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+    z-index: 101;
+    text-align: left !important;
+    overflow: hidden;
+    transition: height 0.5s ease-in-out;
+}
+
+.top_toolbar {
+    top: 0px;
+    height: 40px;
+    border-bottom: 1px solid #444;
+}
+
+.top_toolbar .active {
+    border: 2px solid red !important;
+}
+
+.ui-front {
+    z-index: 200;
+}
+
+.top_toolbar > ul {
+    padding: 0px;
+    margin: 6px;
+    min-width: 600px;
+}
+
+.top_toolbat .ui-selectmenu-menu {
+    z-index: 102;
+}
+
+.top_toolbar > ul > li {
+    list-style-type: none;
+    display: inline-block;
+}
+
+.top_toolbar li span {
+    font-size: 12px;
+    color: #a5a6b1;
+}
+
+.top_toolbar li i {
+    cursor: pointer;
+}
+
+.top_toolbar .glass_ask,
+.top_toolbar .trade_sell {
+    color: red;
+}
+
+.top_toolbar .glass_bid,
+.top_toolbar .trade_buy {
+    color: #8e8eff;
+}
+
+.mainmenu {
+    z-index: 2;
+    position: fixed;
+    top: 40px;
+    bottom: 0px;
+    left: 0px;
+    transition: width 0.5s ease-in-out;
+    width: 155px;
+    backgroun-image: url(images/ui-icons_cccccc_256x240.png);
+}
+
+.mainmenu li {
+    overflow: hidden;
+}
+
+.waitmenu {
+    width: 16px;
+}
+
+.waitmenu .item {
+    opacity: 0 !important;
+    margin-left: 32px !important;
+}
+
+.waitmenu .ui-menu-divider {
+    border: 1px solid rgba(0, 0, 0, 0);
+}
+
+.mainmenu .item {
+    padding: 0.5em;
+    display: block;
+    opacity: 1;
+    text-decoration: none;
+    transition: opacity 0.5s, margin-left 0.5s;
+    width: 140px;
+}
+
+.me-handle {
+    right: 0px;
+    left: auto !important;
+}
+
+h3 {
+    margin: 8px 0;
+}
+
+input {
+    background: #eaeaea;
+    border: 1px solid #425f69;
+    padding: 3px;
+}
+
+fieldset {
+    border: 1px solid #ffffff24;
+    border-radius: 5px;
+}
+
+body > .content {
+    display: flex;
+    height: 100%;
+    margin-left: 16px;
+    margin-top: 40px;
+}
+
+body > .content > div {
+    margin: auto;
+    text-align: center;
+}
+
+.trade_body {
+    max-width: 500px;
+    width: 100%;
+    margin: auto;
+}
+
+
+.header {
+    margin: 10px 0;
+}
+
+.exmo table {
+    font-size: 11px;    
+}
+
+.exmo a {
+    text-decoration: none;
+}
+
+.exmo table td {
+    text-align: center;
+    cursor: pointer;
+}
+
+.exmo table th, .exmo table td {
+    padding: 5px;
+}
+
+.exmo {
+    display: block;
+    position: relative;
+    overflow-x: scroll;
+    height: 120px;
+    width: 100%;
+}
+
+table.report {
+    width: 100%;
+}
+
+table.report td {
+    vertical-align: top;
+}
+
+.percent td {
+    font-size: 12px;
+}
+
+.price td {
+    color: #DDD;
+    font-size: 9px;
+}
+
+.price td:hover {
+    color: #333;
+}
+
+.calc {
+    padding: 5px;
+    margin: 0px auto;
+}
+
+.calc td {
+    font-size: 12px;
+}
+
+.calc table {
+    margin: auto;
+}
+
+.separator td {
+    height: 10px;
+    border-bottom: 2px solid black;
+    margin-bottom: 10px;
+}
+
+.rates iframe {
+    border:0;
+    width: 100%;
+    height: 168px;
+    transition: opacity 1s;
+    opacity: 1;
+}
+
+#trans_div {
+    transition: opacity 1s;
+    opacity: 1;
+}
+
+#curpair {
+    font-size: 24px;
+    color: blue;
+    text-align: center;
+}
+
+a {
+    cursor: pointer;
+}
+
+.currency {
+    text-align: center;
+    padding: 10px;
+    border: 1px solid gray;
+    margin: 2px;
+    float: left;
+    background: #EEE;
+    color: #555;
+    font-family: monospace;
+    box-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+    cursor: pointer;
+    transition: background 1s;
+}
+
+.cur {
+   background: #AEF; 
+}
+
+.investing {
+    margin: 20px;
+    transition: opacity 1s;
+}
+
+.investing td {
+    padding: 5px;
+    font-size: 0.6em;
+}
+
+.investing .Font {
+    color: gray;
+}
+
+.investing .greenFont {
+    color: #0A0;
+}
+
+.investing .redFont {
+    color: #A0;
+}
+
+a.order_price {
+    padding: 2px;
+    margin: 0px 5px;
+} 
+
+#order_price_buy, #order_price_sell {
+    font-size: 11px;
+}
+
+.pairs {
+}
+
+.pairs select {
+    display: block;
+    width: 100%;
+    border: 1px solid gray;
+    font-size: 1.2em;
+}
+
+.graph_list {
+    overflow-x: scroll;
+}
+
+.graph_list > div {
+    width: 640px;
+}
+
+.graph_list .result {
+    margin: 10px 0px;
+    width: 300px;
+    display: inline-block; 
+}
+
+.block {
+    margin: 10px;
+}
+
+#critList a {
+    margin: 1px;
+    padding: 1px 5px;
+    font-size: 11px;
+    color: white;
+}
+
+#critList a {
+    display: inline-block;
+    transition: opacity 0.5s;
+    color: white;
+    background: gray;
+}
+
+#critList a.crit {
+    background: red !important;
+}
+
+#critList a.warn {
+    background: blue !important;
+} 
+
+#critList a.ok {
+    background: green !important;
+}
+
+h3.crit {
+    color: red !important;
+}
+
+h3.warn {
+    color: blue !important;
+} 
+
+h3.ok {
+    color: green !important;
+}   
+
+#critList .clear {
+    width: 10px;
+    background: gray;
+}
+
+#order_pair {
+    margin: 0px;
+}
+
+td.name {
+    width: 70px;
+}
+
+#apikeyForm td.name {
+    width: 140px;
+    text-align: right;
+}
+
+#apikeyForm input {
+    width: 22em;
+    max-width: 100%;
+}
+
+.order_plan {
+    font-size: 0.8em;
+}
+
+.order_plan span {
+    margin: 0px 5px;
+}
+
+.order_plan .name {
+    font-weight: bold;
+    color: #777;
+}
+
+.graph canvas {
+    width: 1024px;
+    height: 600px;
+}
+
+.templates {
+    display: none;
+}
+
+textarea {
+    background: #EEE; 
+}
+
+.new_order_form textarea {
+    width: 100%;
+    height: 6em;
+    margin-top: 10px;
+}
+
+.new_order_form .tparam {
+    margin-top: 10px;
+}
+
+.buttons {
+    text-align: center;
+}
+
+.chart_area {
+}
+
+.chart_area svg > rect {
+    opacity: 0.5;
+}
+
+.graph .buttons {
+    margin-top: 5px;
+}
+
+.graph .panel {
+    position: absolute;
+    z-index: 2;
+    margin: 2px;
+}
+
+.graph .ui-icon-play {display: inline !important;}
+.test .ui-icon-play {display: none !important;}
+
+.graph .ui-icon-stop {display: none !important;}
+.test .ui-icon-stop {display: inline !important;}
+
+.graph .red-border {
+    border: 1px solid red !important;
+}
+
+#graph_area {
+    overflow: hidden;
+    position: relative;
+    text-align: left;
+}
+
+#graph_area .line {
+    position: absolute;
+    text-align: left;
+}
+
+.vline span, .tline span {
+    position: absolute;
+    display: block;
+    font-size: 11px;
+    opacity: 0.9;
+    z-index: 10;
+}
+
+.tline span {
+    margin-top: -10px;
+    width: 60px;
+    margin-left: -30px;
+    text-align: center;
+}
+
+.vline span {
+    margin-left: 35px;
+}
+
+.vline .buy {
+    color: white;
+}
+
+.vline .sell {
+    color: red;
+}
+
+#graph_area .vline {
+    height: 10px;
+    left: 0px;
+    right: 0px;
+    border-top: 1px solid rgba(0, 255, 0, 0.6);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.6);
+    background: rgba(255, 0, 0, 0.3);
+}
+
+#graph_area .hline {
+    width: 1px;
+    top: 0px;
+    bottom: 0px;
+    border-right: 1px solid rgba(255, 255, 255, 0.6);
+}
+
+.buy {
+    border-color: blueviolet !important;
+}
+
+.sell {
+    border-color: brown !important;
+}
+
+.info {
+    font-size: 1em;
+}
+
+.info span {
+    text-decoration: underline;
+}
+
+.buy .info {
+    color: #8e8eff;
+}
+
+.sell .info {
+    color: #ffaeae;
+}
+
+.inactive td {
+    background: #252525c2 !important;
+} 
+
+.success td {
+    color: #4c4c4c !important;
+    background: #252525c2 !important;
+} 
+
+.fail, .fail td {
+    color: rgba(255, 0, 0, 0.6) !important;
+}
+
+.fail td {
+    background: #521616ad !important;
+}
+
+.success .info, 
+.inactive .info {
+    opacity: 0.4;
+}
+
+.test {
+    border-color: #7d167d !important;
+    color: #b78ace !important;
+}
+
+.order_item {
+    /*padding: 2px 5px;*/
+}
+
+#worders {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+#worders td {
+    display: table-cell !important;
+    margin: 0px;
+    border: 1px solid rgba(0, 0, 0, 0);
+}
+
+.order_item h3 {
+    margin: 5px;
+}
+
+.login {
+    margin: auto;
+}
+
+.login > div {
+    text-align: center;
+}
+
+#loginForm > div {
+    margin: 5px;
+}
+
+.login label {
+    min-width: 5em;
+    text-align: right;
+    display: inline-block;
+    padding: 0px 5px;
+}
+
+.ui-dialog, .mainmenu {
+    box-shadow: 2px 2px 12px black;
+}
+
+#registerLayer {
+    display: none;
+}
+
+.trgitem .ui-icon-closethick {
+    position: absolute;
+    right: 20px;
+    margin-top: 11px;
+    cursor: pointer;
+}
+
+.trgitem h4 {
+    color: #69e;
+    margin: 4px;
+}
+
+.hiddePanel {
+    overflow: hidden;
+    height: 5px;
+    transition: height 0.5s ease-in-out;
+}
+
+.hiddePanel legend {
+    cursor: pointer;
+}
+
+.range_tmpl .amount {
+    margin: 5px;
+}
+
+.footer {
+    bottom: 0px;
+    border-top: 1px solid #444;
+}
+
+.console {
+    width: calc(100% - 10px);
+    height: 20px;
+    margin: 5px;
+    background: white;
+    overflow-y: scroll;
+    display: none;
+    transition: height 0.5s ease-in-out, opacity 0.5s ease-in-out;
+}
+
+.console .list {
+    margin-left: 32px;
+}
+
+.console .item {
+    margin: 2px 10px;
+}
+
+.console .panel {
+    position: absolute;
+    width: 32px;
+    top: 5px;
+    bottom: 5px;
+    left: 5px;
+    background: #292a35;
+}
+
+.console span {
+    font-size: 9px;
+    color: black;
+}
+
+.console .error .info {color: #610000;}
+.console .krit .info {color: #770000;}
+.console .info .info {color: #003c61;}
+
+.conshow {
+    display: block;
+} 
+
+.conshow {
+    opacity: 0.3;
+}
+
+.conshow:hover {
+    height: 200px;
+    opacity: 1;
+}
+
+.chart_area svg > g > g:last-child, .markers {pointer-events: none;}
+
+.markers {
+    transition: opacity 0.5s;
+    opacity: 0;
+}
+
+.markers {
+    position: absolute;
+    overflow: hidden;
+}
+
+#test_layer {
+    z-index: 1;
+    position: absolute;
+    display: none;
+}
+
+.test_layer {
+    border: 1px solid gray;
+    display: none;
+}
+
+.test_layer .marker {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    margin-left: -2px;
+    margin-top: -2px;
+    border: 1px solid black;
+    border-radius: 50%;
+}
+
+.test_layer .undefined {
+    background: yellow;
+}
+
+.test_layer .sell {
+    background: red;
+}
+
+.test_layer .buy {
+    background: blue;
+}
+
+.extends_layer td {
+    font-size: 0.8em;
+    color: #838688;
+}
+
+.sell .extends_layer {
+    display: none;
+}
+
+.cl-mean {
+    color: #757577;
+}
+
