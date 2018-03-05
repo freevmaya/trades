@@ -37,8 +37,9 @@ function onEvent(event, callback) {
 
 function r(v, rn) {
     if ($.type(v) == 'number') {
+        var av = Math.abs(v);
         if ($.type(rn) == 'undefined') {
-            rn = v>1000?1:v>10?1000:100000;
+            rn = av>1000?1:av>10?1000:100000;
         }
         return Math.round(v * rn) / rn;
     } else return v;

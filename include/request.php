@@ -16,7 +16,7 @@
             if (!isset($_SESSION['vars'])) $_SESSION['vars'] = [];
 
             return $_SESSION['vars'][$varName] = $this->getVar($varName, isset($_SESSION['vars'][$varName])?$_SESSION['vars'][$varName]:$default);
-        } 
+        }
         
         public static function genSig($values, $secrets) {
             $query_str  = '';

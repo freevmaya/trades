@@ -2,8 +2,9 @@
 
 GLOBAL $__cache_key, $mysql_cache_expired;
 
-include_once(INCLUDE_PATH.'/statistic.inc');
+//include_once(INCLUDE_PATH.'/statistic.inc');
 //include_once(INCLUDE_PATH.'/Memcache.php');
+include_once(INCLUDE_PATH.'/LiteMemcache.php');
 
 define('RESULTTYPE', MYSQLI_ASSOC);
 
@@ -42,7 +43,7 @@ class DB {
         		$result->free();
         		return false;
         	} else {
-        		$row=$result->fetch_array(MYSQLI_ASSOC);
+        		$row=$result->fetch_array($type);
         		$result->free();
                 if ($cached) DB::setCache($cacheKey, $row);
         	}
@@ -101,5 +102,10 @@ class DB {
         return $cache_data;
     
     }     
+
+    static public function safeVal($str) {
+        GLOBAL $db;
+        return $db->real_escape_string($str);
+    }
 }
 ?>

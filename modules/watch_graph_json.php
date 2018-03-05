@@ -5,7 +5,8 @@
 
 
     function asLine() {
-        GLOBAL $request;
+        GLOBAL $request, $market;
+
         $quant      = $request->getVar('quant', 1);
         $all_amount = $request->getVar('all_amount', 10);
         $fields     = array('time', 'buy_price', 'sell_price');
@@ -24,13 +25,11 @@
         $query = "SELECT COUNT(`time`) AS `count`, AVG(buy_price) AS buy_price, AVG(sell_price) AS sell_price, ".
             "AVG(buy_volumes) AS buy_volumes, AVG(sell_volumes) AS sell_volumes, ".
             "FLOOR(unix_timestamp(`time`) / {$quantsec}) AS `t` ".
-            "FROM _trades ".
+            "FROM _trades_{$market['name']} ".
             "WHERE cur_in={$cur_in} AND cur_out={$cur_out} AND ".
             "`time` >= '{$timeStart}' AND `time` <= '{$timeEnd}' GROUP BY `t` ORDER BY `t`";
-
-
-        //echo $query;
-        $trade = DB::asArray($query);
+            
+        $trade = DB::asArray($query, null, true);
         $result = array();
         $volumes = array();
         $gi = 0;
@@ -45,7 +44,7 @@
     }
 
     function asCandle() {
-        GLOBAL $request;
+        GLOBAL $request, $market;
         $quant      = $request->getVar('quant', 1);
         $all_amount = $request->getVar('all_amount', 10);
         $fields     = array('time', 'buy_price', 'sell_price');
@@ -66,13 +65,13 @@
             "MIN(buy_price) AS min_price, MAX(buy_price) AS max_price, buy_price AS close_price, ".
             "AVG(buy_volumes) AS buy_volumes, AVG(sell_volumes) AS sell_volumes, ".
             "FLOOR(unix_timestamp(`time`) / {$quantsec}) AS `t` ".
-            "FROM _trades ".
+            "FROM _trades_{$market['name']} ".
             "WHERE cur_in={$cur_in} AND cur_out={$cur_out} AND ".
             "`time` >= '{$timeStart}' AND `time` <= '{$timeEnd}' GROUP BY `t` ORDER BY `t`";
 
 
         //echo $query;
-        $trade = DB::asArray($query);
+        $trade = DB::asArray($query, null, true);
 
         $result = array();
         $volumes = array();

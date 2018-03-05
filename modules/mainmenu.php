@@ -38,6 +38,7 @@
 	});
 </script>
 <ul class="mainmenu waitmenu" id="menu">
+	<li><a class="item" href="<?=lk(['page'=>'allcoin'])?>"><?=$locale['SMALLCOINS']?></a></li>
 	<li><a class="item" href="<?=lk(['page'=>'orders'])?>"><?=$locale['ORDERS']?></a></li>
 	<li><a class="item" href="<?=lk(['page'=>'calc'])?>"><?=$locale['TCALC']?></a></li>
 	<li></li>

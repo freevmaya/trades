@@ -8,7 +8,7 @@
         $start_time = date('Y-m-d h:i:s', $start_time);
         $end_time = date('Y-m-d h:i:s', $end_time); 
 
-        $query = "SELECT `id`, UNIX_TIMESTAMP(`time`) as `time`, bid_top, bid_quantity, ask_top, ask_quantity  FROM _orders WHERE cur_in={$cur_in} AND cur_out={$cur_out} AND time>'{$start_time}' AND time<'{$end_time}'";
+        $query = "SELECT `id`, UNIX_TIMESTAMP(`time`) as `time`, bid_top, bid_quantity, ask_top, ask_quantity  FROM _orders_{$market['id']} WHERE cur_in={$cur_in} AND cur_out={$cur_out} AND time>'{$start_time}' AND time<'{$end_time}'";
 //        echo $query;
         $list = DB::asArray($query);
         if ($list) {

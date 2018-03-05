@@ -20,7 +20,7 @@
 		'VOLUME'=>'Объем',
 		'ACTION'=>'Ордер',
 		'TRIGGERS_LABEL'=>'Триггеры исполнения',
-		'WENTWRONG'=>'Something ent wrong', 
+		'WENTWRONG'=>'Извините, но что-то пошло не так.', 
 		'PAIR'=>'Валютная пара',
 		'ORDERS'=>'Ордера',
 		'LOGINERROR'=>'Неверное имя, email или пароль',
@@ -66,16 +66,20 @@
 		'RAGNECANDLE'=>'Тело свечи',
 		'TIMECANDLE'=>'Период свечи (сек.)',
 		'SETTINGS'=>'Настройки',
+		'APISETTING'=>'Настройки API',
 		'APIKEY'=>'API ключ',
 		'APISECRET'=>'Секретная фраза',
 		'APIKEYTITLE'=>'API ключ',
 		'APISECRETTITLE'=>'Секретная фраза',
+		'ACCOUNTTYPE'=>'Тип аккаунта',
 		'ERRORAPIKEY'=>'Неверный ключ или секретная фраза',
 		'MOODSDESC'=>'Баланс сделок',
 		'EXTENDSLAYER'=>'Дополнительно',
 		'TAKEPROFIT'=>'Тейк Профит',
 		'STOPLOSS'=>'Стоп Лосс',
 		'PANIKTITLE'=>'Паническая продажа или покупка по текущей паре',
+		'BALANCECAPTION'=>'Баланс',
+		'SMALLCOINS'=>'Малые монеты',
 		'STATES'=>array(
 			'active'=>'Активный',
 			'process'=>'В процессе',
@@ -86,7 +90,8 @@
 		),
 		'TYPEORDERS'=>array(
 			'buy'=>'Купить',
-			'sell'=>'Продать'
+			'sell'=>'Продать',
+			'message'=>'Сообщить'
 		),
 		'TRIGGERS'=>array(
 			'stop'=>'При наступлении цены',
@@ -95,7 +100,14 @@
 			'below'=>'Цена ниже',
 			'candle'=>'Определенная свеча',
 			'moods'=>'Настроение рынка',
+			'obalance'=>'Баланс ордеров',
+			'floatLoss'=>'Поднимающийся стоп-лосс',
+			'window'=>'Окно',
 			'dev'=>'Пользовательские триггеры'
+		),
+		'ACCOUNTYPES'=>array(
+			'real'=>'Реальный',
+			'demo'=>'Демо'
 		)
 	);
 ?>

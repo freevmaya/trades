@@ -3,37 +3,49 @@
     define('DEFAULTPAIR', 'BTC_USD');
     define('CHECKEVENTPERIOD', 10000);
     define('DEFAULTMARKET', 'exmo');
+    define('DEFAULTACCOUNTTYPE', 'demo');
     define('DATEFORMAT', 'Y-m-d H:i:s');
     session_start();
     
     $lang = 'ru';    
 
     include_once('include/engine.php');
+
     include_once('include/utils.php');
     include_once('include/courses.php');
     include_once('include/'.$lang.'/locale.php');
     include_once('include/events.php');
+    include_once('include/LiteMemcache.php');
+    include_once('include/account.php');
+    include_once('include/markets/baseMarket.php');
     include_once('/home/exmo.inc');
 
+    $mysql_cache_expired = 60 * 60; //1 час
     $dbname = 'trade';
     $request = new Request();
     $charset = 'utf8';
     $curs = array();
     $pair = $request->getVar('pair', DEFAULTPAIR);
+    $account_type = $request->getSVar('account_type', DEFAULTACCOUNTTYPE);
     $suser = isset($_SESSION['USER'])?$_SESSION['USER']:null;
+    $pairIDs = pairIDs($pair);
 
     $theme = $request->getSVar('theme', 'dark');
-    if (!($market = DB::line("SELECT * FROM _markets WHERE name='".$request->getSVar('market', DEFAULTMARKET)."'")))
+    $market_name = $request->getSVar('market', DEFAULTMARKET);
+    if (!($market = DB::line("SELECT * FROM _markets WHERE name='{$market_name}'")))
         $market = DB::line("SELECT * FROM _markets WHERE name='".DEFAULTMARKET."'");
 
     $themePath = "themes/{$theme}/";
+    $account = $suser?(new Account($suser, $market, $account_type)):null;
+    $free_modules = ['user_json'];
+
     
     if ($module = $request->getVar('module')) {
-        if ($module == 'user_json')
+        $events = new Events();
+        if (in_array($module, $free_modules))
             include('modules/'.$module.'.php');
         else {
             if ($suser['token'] == $request->getVar('token')) {
-                $events = new Events();
                 include('modules/'.$module.'.php');
             } else echo '{"error":"Inactive session"}';
         }
@@ -60,6 +72,7 @@
 <script type="text/javascript" src="js/triggersCtrl.js"></script>
 <script type="text/javascript" src="js/order.js"></script>
 <script type="text/javascript" src="js/df.min.js"></script>
+<script type="text/javascript" src="js/pushapp.js"></script>
 <script type="text/javascript" src="js/<?=$lang?>/locale.js"></script>
 
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
@@ -105,20 +118,11 @@
 */    
 
     ui = new (function() {
-        var dialog, onComplete, This = this;
-
-        function close() {dialog.dialog( "close" )}
+        var dialogTmpl, onComplete, This = this;
 
         $(window).ready(function() {
-            dialog = $( "#dialog" );
-            dialog.find('.ui-close').click(close);
-            dialog.find('.ui-ok').click(()=>{
-                if (onComplete) {
-                    if (onComplete()) close();
-                } else close();
-            });
+            dialogTmpl = $( "#dialog" );
             $("input[type=submit], input[type=button], .widget a, button" ).button();
-            //$(document).tooltip();
         });
 
         $.jsonPOST = function(url, params, onSuccess) {
@@ -152,8 +156,9 @@
 
         this.dialog = (title, content, a_onComplete, a_onCancel=null, buttons=null, modal=true)=>{
             onComplete = a_onComplete;
-            dialog.attr('title', title);
-            var ct = dialog.find('.content');
+            var ndlg = dialogTmpl.clone();
+            ndlg.attr('title', title);
+            var ct = ndlg.find('.content');
             ct.empty();
             if ($.type(content) == 'string')
                 ct.html(content);
@@ -174,11 +179,18 @@
                 }
             }
 
-            dialog.dialog({
+            ndlg.dialog({
                 modal: modal,
-                buttons: bts
+                buttons: bts,
+                close: (event, ui)=>{ndlg.dialog('destroy');}
             });
-            return dialog;
+
+            $.extend(ndlg, {
+                toCenter: ()=>{
+                    ndlg.dialog({position: { my: "center", at: "center", of: window }});
+                }
+            });
+            return ndlg;
         }
     })();
 

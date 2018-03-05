@@ -7,10 +7,11 @@
 		var pair;
 		var This = this;
 		var allTriggers = <?=json_encode($locale['TRIGGERS'])?>;
-		var ask_top=1, priory={active:1, test:2, process:3, success:4, inactive:5, fail: 6};
+		var price=1, priory={active:1, test:2, process:3, success:4, inactive:5, fail: 6};
+		var lastDlg;
 
 		onEvent('MARKETPAIRORDERS', function(data) {
-			ask_top = parseFloat(data.ask_price);
+			price = parseFloat((parseFloat(data.ask_top) + parseFloat(data.bid_top)) / 2);
 		});
 
 		onEvent('GRAPHITEMSELECT', function(e) {
@@ -37,14 +38,18 @@
 		});
 
 		onEvent('PRICEACCEPT', function(e) {
-			var ca = pair.split('_');
-			This.edit({pair: pair, action: 'buy', state: 'active', volume: '50%/' + ca[1], triggers: {stop: {value: e.price}}});
+			if (lastDlg) lastDlg.setPrice(e.price);
+			else {
+				var ca = pair.split('_');
+				This.edit({pair: pair, action: 'buy', state: 'active', volume: '50%/' + ca[1], triggers: {stop: {value: e.price}}});
+			}
 		});
 
 
 		function appendItem(item) {
 			var elem = item_tmpl.clone();
 			var info = elem.find('.info');
+			var action = elem.find('.action');
 			item = new Order(item);
 
 			layer.append(elem);
@@ -55,9 +60,10 @@
 					.text('t')
 					.attr('title', locale.BEGINTESTTITLE);
 			}
+			action.html(item.actionString());
 			info.html(item.info());
-			info.click(onItemClick);
-			info.data('data', item);
+			elem.click(onItemClick);
+			elem.data('data', item);
 		}
 
 		function onItemClick(e) {
@@ -69,10 +75,14 @@
 			layer.empty();
 			list.sort((a, b)=>{return priory[a.state]-priory[b.state]});
 			$.each(list, function(i, item) {appendItem(item);});
+			fireEvent('ORDERSRESPONSE', list);
 		}
 
 		function refreshList() {
-			$.getJSON(url, {method: 'getList', pair: pair, token: token}, updateList);  
+			$.getJSON(url, {method: 'getList', pair: pair, token: token, market: '<?=$market['name']?>'}, (a_data)=>{
+				if (a_data.data) updateList(a_data.data);
+				if (a_data.minmax) fireEvent('PAIRMINMAX', utils.objToFloat(a_data.minmax, ['min', 'max']));
+			});  
 		}
 
 		function error(msg) {
@@ -80,7 +90,7 @@
 		}
 
 		function checkResponse(data) {
-			if (!data.result) ui.error('<?=$locale['WENTWRONG']?>');			
+			if (!(data.data && data.data.result)) ui.error('<?=$locale['WENTWRONG']?>');			
 		}
 
 		this.deleteOrder = (id)=>{
@@ -88,7 +98,7 @@
 		}
 
 		this.edit = (item)=>{
-			var This = this, dlg;
+			var This = this, dlg, triggers;
 
 			var t = item.id?'<?=$locale['EDITORDER']?>':'<?=$locale['NEWORDER']?>'
 			var bt = {};
@@ -100,7 +110,7 @@
 				}
 			}
 
-			dlg = ui.dialog(t, tmpl.clone(), function() {
+			lastDlg = dlg = ui.dialog(t, tmpl.clone(), function() {
 				var tg = dlg.find('.triggers').val();
 				var fd = new FormData(dlg.find('form')[0]);
 				try {
@@ -116,18 +126,22 @@
 					return true;
 				}
 				return false;
-			}, ()=>{}, bt);
+			}, ()=>{}, bt, false);
+
+			dlg.dialog({close: (event, ui)=>{lastDlg=null}});
+
+			dlg.setPrice = (price)=>{triggers.applyPrice(price)}
 
 			if (!item) item = defOrder();
 
 			var currency = (pair.split('_'))[0];
-			new triggersCtrl(dlg.find(".triggers_layer"), item.triggers, $('.trigger_templates'), allTriggers, ask_top);
 
 			var exlayer = dlg.find(".extends_layer");
 			exlayer.find("legend").click(showExtend);
 
 			utils.fillPairs(dlg.find('[name="pair"]'), item.pair);			
 			utils.fillDlg(dlg, item);
+			triggers = new triggersCtrl(dlg.find(".triggers_layer"), item.triggers, $('.trigger_templates'), allTriggers, price);
 
 			dlg.find('select').selectmenu();
 			dlg.find(".spinner" ).spinner();
@@ -150,6 +164,8 @@
 			}
 
 			updateAction(item.action);
+
+			dlg.toCenter();
 		}
 
 		function defOrder() {
@@ -164,12 +180,14 @@
 		}
 
 		function onUserEvents(e) {
-			var evs = ['ORDERSUCCESS', 'UPDATEORDER', 'DELETEORDER'];
-			if ((evs.indexOf(e.event) > -1) && (!e.data.pair || (e.data.pair == pair))) {
-				if (e.data.state != 'test') {
-					refreshList();
-					if (e.data.state) 
-						fireEvent('ALERT', (e.data.state=='success')?'ok':'warn');
+			if (!e.data.pair || (e.data.pair == pair)) {
+
+				if ((['ORDERSUCCESS', 'UPDATEORDER', 'DELETEORDER', 'FAILORDER'].indexOf(e.event) > -1)) {
+					if (e.data.state != 'test') refreshList();
+				} 
+
+				if (['ORDERSUCCESS', 'FAILORDER'].indexOf(e.event) > -1) {
+					if (e.data.state) fireEvent('ALERT', (e.data.state=='success')?'ok':'warn');
 				}
 			}
 		}
@@ -256,7 +274,23 @@
 			    <input type="text" class="spinner value">
 		  	</fieldset>
 		</div>
-		<div class="range_tmpl">
+		<div class="range_tmpl range">
+			<fieldset>
+				<legend class="cl-mean"></legend>
+				<div class="caption"></div>
+				<div class="amount"></div>
+				<div class="slider-range"></div>
+ 		  	</fieldset>
+		</div>
+		<div class="range_percent_tmpl range">
+			<fieldset>
+				<legend class="cl-mean"></legend>
+				<div class="caption"></div>
+				<div class="amount"></div>
+				<div class="slider-range"></div>
+ 		  	</fieldset>
+		</div>
+		<div class="cur_range_tmpl range">
 			<fieldset>
 				<legend class="cl-mean"></legend>
 				<div class="caption"></div>
@@ -283,8 +317,9 @@
 	<div>
 		<table>
 			<tr class="order_item">
-				<td class="state ui-button ui-corner-left"></td>
-				<td class="ui-button ui-corner-right">
+				<td class="state ui-button ui-corner-left tx"></td>
+				<td class="action ui-button tx"></td>
+				<td class="ui-button ui-corner-right tx">
 					<div class="info"></div>
 				</td>
 			</tr>

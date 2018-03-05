@@ -4,10 +4,20 @@
 		var itTml = $('.templates .item');
 		var list = consoleLayer.find('.list');
 
-		function addItem(time, data, type) {
+		function parseData(data) {
+			if ($.type(data) == 'string') {
+				if (data[0] != '{') return data;
+				data = JSON.parse(data);
+			}
+			return data.pair + (data.action?(', ' + data.action.type):'') + 
+					', ' + (data.error?('error: ' + data.error):('price: ' + r(data.price))); 
+		}
+
+		function addItem(time, event, data, type) {
 			var elem = itTml.clone();
 			elem.find('.time').text(time);
-			elem.find('.info').html(JSON.stringify(data));
+			elem.find('.event').text(event);
+			elem.find('.info').html(parseData(data));
 			if (type) elem.addClass(type);
 			list.append(elem);
 
@@ -21,13 +31,13 @@
 			var url = 'index.php?module=user_events_json';
 			$.getJSON(url, {method: 'getUserEvents', token: token}, (list)=>{
 				$.each(list, (i, item)=>{
-					addItem(item.time, item.data, item.type);
+					addItem(item.time, item.event, item.data, item.type);
 				});
 			});
 		}
 
 		onEvent('EVENTRESPONSE', (e)=>{
-			if (e.event == 'CONSOLE') addItem(e.time, e.data, e.type);
+			if (['CONSOLE', 'ORDERSUCCESS', 'FAILORDER'].includes(e.event)) addItem(e.time, e.event, e.data, e.type);
 		});
 
 		refresh();
@@ -43,7 +53,7 @@
 	</div>
 	<div class="templates">
 		<div class="item">
-			<span class="time"></span><span class="info"></span>
+			<span class="time"></span><span class="event"></span><span class="info"></span>
 		</div>
 	</div>
 </div>

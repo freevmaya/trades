@@ -28,7 +28,7 @@ class fdbg {
         return ((float)$usec + (float)$sec); 
     }
     
-    public function callStackItem($depth=1) {
+    public static function callStackItem($depth=1) {
 		$stack = fdbg::GetStack();
 		return $stack[$depth + 1];
     }
@@ -51,6 +51,10 @@ function trace($value, $to='file', $callDepth=2) {
                         echo '</pre>';
                         break;
         case 'file': fdbg::trace($value, $callDepth);
+                    break;
+        default : $line = fdbg::callStackItem($callDepth);
+                    echo 'trace in file: '.$line['file'].', line: '.$line['line']."\n";
+                    print_r($value);
                     break;
     }
 }

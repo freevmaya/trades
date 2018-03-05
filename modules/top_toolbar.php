@@ -3,23 +3,23 @@
 		var toobar = $('.top_toolbar');
 		var _prevv = {};
 		var pair;
+		var url = 'index.php?module=user_json';
 
 		function setOrders(ask, bid, askvol, bidvol) {
 			toobar.find('.ask').text(r(ask));
 			toobar.find('.bid').text(r(bid));
 
-			var volb = bidvol - askvol;
-			var volbLabel = toobar.find('.volbLabel');
+			var allv = askvol + bidvol;
+			var volb = askvol/allv - bidvol/allv;
 
+			var volbLabel = toobar.find('.volbLabel');
 			volbLabel.text(r(volb, 10));
 			volbLabel.css('color', volb>=0?'#8e8eff':'red');
-
 			_prevv[pair] = {ask, bid, askvol, bidvol};
 		}
 
 		function refreshOrders(data) {
-			var vol = data.ask_volumes + data.bid_volumes;
-			setOrders(parseFloat(data.ask_price), parseFloat(data.bid_price), data.ask_volumes/vol, data.bid_volumes/vol);
+			setOrders(parseFloat(data.ask_top), parseFloat(data.bid_top), data.ask_glass, data.bid_glass);
 		}
 
 		function refreshTrades(data) {
@@ -27,20 +27,34 @@
 			var sv = parseFloat(data.sell_volumes);
 			var vol = bv + sv;
 			var tradb = (bv - sv) / vol;
-
 			var tradeBalance = toobar.find('.tradeBalance');
 			tradeBalance.text(r(tradb, 10));
 			tradeBalance.css('color', tradb>=0?'#8e8eff':'red');
 		}
 
+		function setBalance(v1, v2) {
+			var bl = toobar.find('.balance span');
+			$(bl[0]).text(r(parseFloat(v1)));
+			$(bl[1]).text(r(parseFloat(v2)));
+		}
+
+		function onUserEvents(e) {
+			if ((e.event == 'BALANCE') && (e.data[pair])) 
+				setBalance(e.data[pair][0], e.data[pair][1]);
+		}
+		
 		onEvent('MARKETPAIRORDERS', refreshOrders);
 		onEvent('MARKETPAIRTRADES', refreshTrades);
+		onEvent('EVENTRESPONSE', onUserEvents);
 
 		pairListeners.push((a_pair)=>{
 			pair = a_pair;
 			if (_prevv[pair]) setOrders(_prevv[pair].ask, _prevv[pair].bid, _prevv[pair].askvol, _prevv[pair].bidvol);
-        })
 
+			$.getJSON(url, {method: 'getBalance', pair, token}, (a_data)=>{
+				if (a_data.result) setBalance(a_data.result[0], a_data.result[1]); 
+			}); 
+        })
 		var panik = toobar.find('.panik');
         panik.button();
         panik.click(()=>{
@@ -48,7 +62,6 @@
         		panik.addClass('active');
         		ui.message(locale.PANIKACTIVATE);
         	} else {
-
         	}
         });
 	})
@@ -74,8 +87,13 @@
 			<span><?=$locale['TRADES']?>: </span><i class="tradeBalance" title="<?=$locale['RATEVOLTRADES']?>"></i>
 		</li>
 		<?if ($suser) {?>
-		<li style="float:right">
+		<li class="right">
 			<span class="panik ui-button" title="<?=$locale['PANIKTITLE']?>"></span>
+		</li>
+		<li class="right">
+			<span class="balance" title="<?=$locale['BALANCECAPTION']?>">
+				<span></span>/<span></span>
+			</span>
 		</li>
 		<?}?>
 	</ul>

@@ -15,6 +15,12 @@ var utils = new (function() {
         return list;
     }
 
+    this.strToFloat = (str, maxVal)=>{
+        var f = parseFloat(str);
+        if (str[str.length - 1] == '%') return f * maxVal / 100;
+        else return f;
+    }
+
     this.objToFloat = (obj, fields)=>{
         for (var f=0; f<fields.length; f++)
             obj[fields[f]] = parseFloat(obj[fields[f]]);
@@ -35,8 +41,11 @@ var utils = new (function() {
             for (var n in item) {
                 var v = item[n];
                 var ctrl = dlg.find('[name="' + n + '"]');
-                if (ctrl.length > 0) ctrl.val(v);
-                else {
+                if (ctrl.length > 0) {
+                    if ($.type(v) == 'object')
+                        ctrl.val(JSON.stringify(v));
+                    else ctrl.val(v);
+                } else {
                     dlg.find('[name="' + n + '[]"]').each(function(i, ctrl) {
                         ctrl = $(ctrl);
                         if (ctrl.val() == v) ctrl.attr('checked', 1);

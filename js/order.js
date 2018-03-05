@@ -10,12 +10,21 @@ var Order = function(tdata) {
 		function pitem(type, tg) {
 			if ($.type(tg)=='array') $.each(tg, (i, ndata)=>{pitem(type, ndata)});
 			else {
-				if (tg.value) info += (info?',':'') + locale.TRIGGERS[type] + ' <span>' + tg.value + '</span>';
-				else if (tg.range) info += (info?',':'') + locale.TRIGGERS[type] + ' <span>' + tg.range.min + '-' + tg.range.max + '</span>';
+				var rng;
+				if (tg.value) info += (info?',':'') + locale.TRIGGERS[type] + ' <span>' + r(tg.value) + '</span>';
+				else if ((rng = tg.range) || (rng = tg.cur_range)) 
+					info += (info?',':'') + locale.TRIGGERS[type] + ' <span>' + r(rng.min) + '-' + r(rng.max) + '</span>';
+				else if (rng = tg.range_percent) {
+					info += (info?',':'') + locale.TRIGGERS[type] + ' <span>' + r(rng.min * 100) + '%-' + r(rng.max * 100) + '%</span>';
+				}
 			}
 		}
 
 		$.each(tgs, pitem);
-		return locale.ACTIONS[this.action] + ' ' + this.volume + ' ' + info;
+		return info;
+	}
+
+	this.actionString = function() {
+		return locale.ACTIONS[this.action] + ' ' + this.volume;
 	}
 }

@@ -13,7 +13,7 @@
     $timeStart = date(DATEFORMAT, $utime);
     $quantum = $request->getVar('quantum', 1);
 
-    $query = "SELECT UNIX_TIMESTAMP(time) as `time`, buy_price, sell_price FROM _trades WHERE cur_in={$cur_in} AND cur_out={$cur_out} AND ".
+    $query = "SELECT UNIX_TIMESTAMP(time) as `time`, buy_price, sell_price FROM _trades_{$market['id']} WHERE cur_in={$cur_in} AND cur_out={$cur_out} AND ".
         "`time` >= '{$timeStart}' AND `time` <= '{$timeEnd}'"; 
 
     $trade = DB::asArray($query);
