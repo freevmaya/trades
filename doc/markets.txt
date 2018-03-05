@@ -1,0 +1,7 @@
+Требуемые файлы и классы для реализации маркета
+
+trade/markets/название_market.php
+trade/js/external_название.js
+
+cron/currency/include/sender/название_sender.php
+cron/currency/include/crawler/названиеCrawler.php
