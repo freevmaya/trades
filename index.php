@@ -18,20 +18,26 @@
     include_once('include/LiteMemcache.php');
     include_once('include/account.php');
     include_once('include/markets/baseMarket.php');
-    include_once('/home/exmo.inc');
+    //include_once('/home/exmo.inc');
 
     $mysql_cache_expired = 60 * 60; //1 час
     $dbname = 'trade';
     $request = new Request();
     $charset = 'utf8';
     $curs = array();
-    $pair = $request->getVar('pair', DEFAULTPAIR);
+    $market_name = $request->getSVar('market', DEFAULTMARKET);
+
+    include_once("data/{$market_name}_pairs.php");
+    
+    $pairs = explode(',', $pairs);
+    $pair_attr_name = $market_name.'_pair';
+    $pair = $request->getVar($pair_attr_name, $pairs[0]);
+
     $account_type = $request->getSVar('account_type', DEFAULTACCOUNTTYPE);
     $suser = isset($_SESSION['USER'])?$_SESSION['USER']:null;
     $pairIDs = pairIDs($pair);
 
     $theme = $request->getSVar('theme', 'dark');
-    $market_name = $request->getSVar('market', DEFAULTMARKET);
     if (!($market = DB::line("SELECT * FROM _markets WHERE name='{$market_name}'")))
         $market = DB::line("SELECT * FROM _markets WHERE name='".DEFAULTMARKET."'");
 
@@ -87,6 +93,7 @@
     <?if ($suser) {?>
     var token = '<?=$suser['token']?>';
     <?}?>
+    external.pairs = <?=json_encode($pairs, true)?>;
 
     $.cookie.json = true;
     
@@ -102,6 +109,8 @@
         onEvent('MARKETPAIRTRADES', (data)=>{
             if (pair) document.title = r(data.sell_price) + '\u25BA' + pair;
         });
+
+        external.initialize();
     });
     
     var _chartsOnLoad = [];    
@@ -203,6 +212,7 @@
 <div class="content">
 <?
 if ($suser) {
+
     $page = $request->getVar('page', 'orders');
     include('pages/'.$page.'.php');
 } else include('pages/login.php');

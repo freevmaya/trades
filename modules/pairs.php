@@ -1,9 +1,12 @@
+<?
+    GLOBAL $pairs;
+?>
 <script>
     var pairsObject;
     var pairsClass = function(pairsList) {
         var This = this;
-        var pairs = external.getPairs();
-        var cur_pair = $.cookie('CURRENTPAIR') || '<?=$pair?>';
+        var pairs = external.pairs;
+        var cur_pair = $.cookie('<?=$pair_attr_name?>') || '<?=$pair?>';
 
         for (var i=0; i<pairs.length;i++) {
             var opt = $('<option value="' + pairs[i] + '">' + pairs[i] + '</option>');
@@ -28,7 +31,7 @@
 
         this.setCurPair = function(a_cur_pair) {
             cur_pair = a_cur_pair;
-            $.cookie('CURRENTPAIR', cur_pair);
+            $.cookie('<?=$pair_attr_name?>', cur_pair);
             reset_pair(cur_pair);
         }
 

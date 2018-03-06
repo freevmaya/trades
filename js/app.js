@@ -39,7 +39,7 @@ function r(v, rn) {
     if ($.type(v) == 'number') {
         var av = Math.abs(v);
         if ($.type(rn) == 'undefined') {
-            rn = av>1000?1:av>10?1000:100000;
+            rn = av>1000?1:av>10?100:av>0.1?10000:av>0.001?1000000:100000000;
         }
         return Math.round(v * rn) / rn;
     } else return v;
@@ -109,3 +109,42 @@ $.fn.extend({
         });
     }
 })
+
+function simpleDrag(elem, onStartDrag, onDrag, onEndDrag) {
+    var This=this, spos;
+    var ds = 0;
+
+    elem.on('mousedown', (e)=>{
+        if (ds == 0) {
+            spos = new Vector(e.pageX, e.pageY);
+            ds = 1;
+        }
+    });
+    $(window).on('mouseup', (e)=>{
+        if (ds > 0) {
+            setTimeout(()=>{
+                if ((ds == 2) && onEndDrag) onEndDrag();
+                ds = 0;
+            }, 100);
+        }
+    });
+
+    $(window).on('mousemove', (e)=>{
+        if (ds > 0) {
+            var mpos = new Vector(e.pageX, e.pageY);
+            if (ds == 1) {
+                if (mpos.sub(spos).length() > 3) {
+                    ds = 2;
+                    if (onStartDrag) onStartDrag();
+                }
+            } else {
+                if (onDrag) onDrag(mpos.sub(spos));
+                spos = mpos;
+            }
+        }
+    });
+
+    this.getState = ()=>{
+        return ds;
+    }
+}

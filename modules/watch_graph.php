@@ -2,7 +2,7 @@
     var graph = new (function() {
         var chart_trades, chart_volumes, chart_test, This = this, ALLAMOUNT=48;
         var graph_area, test_layer, markers, minmax, method = $.cookie('GRAPHMETHOD') || 'asCandle', chart_type;
-        var gdata, test_res={}, test_state=false, test_time, quant = 10;
+        var gdata, test_res={}, test_state=false, test_time, quant = 10, offset=new Vector();
         var worders;
         this.cpair = '';
         this.all_amount = false;
@@ -82,11 +82,12 @@
         this.asLine = (response)=>{
             creteView();
 
-            minmax = utils.minmaxCalc(response, 1);
+            minmax = utils.minmaxCalc(response, 1, 2);
             markers.css(area);
             var variation = (minmax[1] - minmax[0]) * 0.2;
             minmax[2] = minmax[0] - variation; 
             minmax[3] = minmax[1] + variation; 
+            var ofk = new Vector(0, (minmax[3] - minmax[2]) / area.height);
 /*
             var adata = $.merge([['<?=$locale['TIME']?>', '<?=$locale['BUY']?>', '<?=$locale['SELL']?>']], response);
             var data = google.visualization.arrayToDataTable(adata);
@@ -110,7 +111,9 @@
                         ticks: ticks()
                 },
                 vAxis: {minValue: minmax[0], maxValue: minmax[1], titleTextStyle: axisStyle, textStyle: axisStyle,
-                    viewWindow: {min: minmax[2], max: minmax[3]}
+                    viewWindow: {min: minmax[2] + offset.y * ofk.y, max: minmax[3] + offset.y * ofk.y},
+                    baseline: 0,
+                    gridlines: {count: 10}
                 },
                 tooltip: {isHtml: true},
                 height: area.height + 20,
@@ -129,6 +132,7 @@
             var variation = (minmax[1] - minmax[0]) * 0.2;
             minmax[2] = minmax[0] - variation; 
             minmax[3] = minmax[1] + variation; 
+            var ofk = new Vector(0, (minmax[3] - minmax[2]) / area.height);
             markers.css(area);
 
             var rdata = adata.slice(); 
@@ -153,7 +157,7 @@
                 hAxis: {titleTextStyle: axisStyle, textStyle: axisStyle,
                     ticks: ticks()},
                 vAxis: {minValue: minmax[0], maxValue: minmax[1], titleTextStyle: axisStyle, textStyle: axisStyle,
-                    viewWindow: {min: minmax[2], max: minmax[3]}
+                    viewWindow: {min: minmax[2] + offset.y * ofk.y, max: minmax[3] + offset.y * ofk.y}
                 },
                 height: area.height + 20,
                 chartArea: area,
@@ -179,7 +183,7 @@
 
         this.drawVolumes = (volumes)=>{
 //VOLUMES
-            var vminmax = utils.minmaxCalc(volumes, 1);
+            var vminmax = utils.minmaxCalc(volumes, 1, 2);
 
             data = google.visualization.arrayToDataTable($.merge([['<?=$locale['TIME']?>', '<?=$locale['BUYVOLUME']?>', '<?=$locale['SELLVOLUME']?>']], volumes));
             
@@ -272,37 +276,28 @@
             if (pair) url += '&pair=' + pair + '&quant=' + a_quant + '&all_amount=' + ALLAMOUNT;
             this.cpair = pair;
 
-            var methods = {
-                asCandle: function(a_data) {
-                    if (a_data.trade.length > 0) {
-                        quant_i = [];
-                        var t = utils.arrToFloat(a_data.trade, [1, 2, 3, 4]);
-                        times = [t[0][0], t[t.length - 1][0]];
-                        rdata = t;//timeCnv(t);
-                        vdata = utils.arrToFloat(a_data.volumes, [1, 2]);
-                        This[method](rdata);
-                        This.drawVolumes(vdata);
-                        This.drawTest();
-                        fireEvent('TRADEHISTORY_RESPONSE', a_data.trade);
-                    }
-                },
-                asLine: function(a_data) {
-                    if (a_data.trade.length > 0) {
-                        quant_i = [];
-                        var t = utils.arrToFloat(a_data.trade, [1, 2]);
-                        times = [t[0][0], t[t.length - 1][0]];
-                        rdata = t;//timeCnv(t);
-                        vdata = utils.arrToFloat(a_data.volumes, [1, 2]);
-                        This[method](rdata);
-                        This.drawVolumes(vdata);
-                        This.drawTest();
-                        fireEvent('TRADEHISTORY_RESPONSE', a_data.trade);
-                    }
-                }
+            function doComplete(t, a_data) {
+                quant_i = [];
+                times = [t[0][0], t[t.length - 1][0]];
+                rdata = t;
+                vdata = utils.arrToFloat(a_data.volumes, [1, 2]);
+                This[method](rdata);
+                This.drawVolumes(vdata);
+                This.drawTest();
+                fireEvent('TRADEHISTORY_RESPONSE', a_data.trade);
+                fireEvent('VOLUMES_RESPONSE', vdata);
+                fireEvent('LASTORDER_RESPONSE', a_data.last_orders);
             }
 
 
-            $.getJSON(url, {token: token, method: method}, methods[method]); 
+            $.getJSON(url, {token: token, method: method}, {
+                asCandle: function(a_data) {
+                    if (a_data.trade.length > 0) doComplete(utils.arrToFloat(a_data.trade, [1, 2, 3, 4]), a_data);
+                },
+                asLine: function(a_data) {
+                    if (a_data.trade.length > 0) doComplete(utils.arrToFloat(a_data.trade, [1, 2]), a_data);
+                }
+            }[method]); 
         }
 
         this.setGraphMethod = function(a_method) {
@@ -319,7 +314,7 @@
 
         this.clearTest = function() {
             test_res[this.cpair] = [];
-            chart_test.clearChart();
+            if (chart_test) chart_test.clearChart();
             test_layer.css('display', 'none');
             if (test_state) This.testAbort();
         }
@@ -425,6 +420,7 @@
         $(window).ready(()=>{
             pairListeners.push((pair, sell_min, buy_max)=>{
                 This.cpair = pair;
+                offset = new Vector();
                 test_layer.css('display', (test_res[This.cpair] && (test_res[This.cpair].length > 0))?'block':'none');
                 if (test_state) This.testAbort();
 
@@ -447,40 +443,56 @@
             var buyTitle = vline.find('.buy');
             var sellTitle = vline.find('.sell');
 
-            graph_area.click((e)=>{
-                setTimeout(function() {if(!rowselected) {fireEvent("PRICEACCEPT", {price: selectprice})}}, 100);
+            function showMarkers(vis) {
+                markers.css('opacity', vis?1:0);
+            }
+
+            var sd = new simpleDrag(graph_area, ()=>{
+                showMarkers(false);
+            }, (delta)=>{
+                offset = offset.add(delta);
+                redraw();
+            }, ()=>{
+                showMarkers(true);
             });
 
-            graph_area.mouseover(()=>{markers.css('opacity', 1);});
-            graph_area.mouseout(()=>{markers.css('opacity', 0);});
+            graph_area.click((e)=>{
+                if (sd.getState() < 2)
+                    setTimeout(function() {if(!rowselected) {fireEvent("PRICEACCEPT", {price: selectprice})}}, 100);
+            });
+
+            graph_area.mouseover(()=>{if (sd.getState() < 2) showMarkers(true);});
+            graph_area.mouseout(()=>{if (sd.getState() < 2) showMarkers(false);});
 
             graph_area.on('mousemove', (e)=>{
-                if (minmax && (graph_area[0] == e.currentTarget)) {
-                    var mpos = new Vector(e.pageX - markers.offset().left, e.pageY - markers.offset().top);
-                    var d = minmax[3] - minmax[2], y = mpos.y + 26, ah = area.height, m0=minmax[0];
+                var mpos = new Vector(e.pageX, e.pageY);
+                if (sd.getState() < 2) {
+                    if (minmax && (graph_area[0] == e.currentTarget)) {
+                        var mpos = new Vector(mpos.x - markers.offset().left, mpos.y - markers.offset().top);
+                        var d = minmax[3] - minmax[2], y = mpos.y + 26, ah = area.height, m0=minmax[0];
 
-                    selectprice = m0 + (1 - y/ah) * d;
-                    var sellprice = selectprice + selectprice * external.commission * 2;
-                    var spy = (1 - (sellprice - m0)/d) * ah;
-                    var h = y - spy;
+                        selectprice = m0 + (1 - y/ah) * d;
+                        var sellprice = selectprice + selectprice * external.commission * 2;
+                        var spy = (1 - (sellprice - m0)/d) * ah;
+                        var h = y - spy;
 
-                    var td = times[1] - times[0];
-                    var loffset = 0;
-                    var ftime = timeFormat(Math.round(times[0] + mpos.x/area.width * td));
-                    var dv = 1;//area.width / ALLAMOUNT;
+                        var td = times[1] - times[0];
+                        var loffset = 0;
+                        var ftime = timeFormat(Math.round(times[0] + mpos.x/area.width * td));
+                        var dv = 1;//area.width / ALLAMOUNT;
 
-                    vline.css({'margin-top': mpos.y - h, height: h});
-                    hline.css('margin-left', Math.round(mpos.x / dv) * dv);
-                    tline.css({'margin-left': mpos.x, 'margin-top': area.height});
+                        vline.css({'margin-top': mpos.y - h, height: h});
+                        hline.css('margin-left', Math.round(mpos.x / dv) * dv);
+                        tline.css({'margin-left': mpos.x, 'margin-top': area.height});
 
-                    var m = minmax[1];
-                    var o = m>1000?1:(m>1?1000:1000000);
-                    buyTitle.text(locale.VLINE.buy + ' ' + r(selectprice, o));
-                    sellTitle.text(locale.VLINE.sell + ' ' + r(sellprice, o));
-                    tline.find('span').text(ftime);
+                        var m = minmax[1];
+                        buyTitle.text(locale.VLINE.buy + ' ' + r(selectprice));
+                        sellTitle.text(locale.VLINE.sell + ' ' + r(sellprice));
+                        tline.find('span').text(ftime);
 
-                    buyTitle.css({'margin-top': h, 'margin-left': mpos.x - buyTitle.width() - 5});
-                    sellTitle.css({'margin-top': -11, 'margin-left': mpos.x + 5});
+                        buyTitle.css({'margin-top': h, 'margin-left': mpos.x - buyTitle.width() - 5});
+                        sellTitle.css({'margin-top': -11, 'margin-left': mpos.x + 5});
+                    }
                 }
             });
 

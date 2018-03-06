@@ -10,7 +10,7 @@
 			toobar.find('.bid').text(r(bid));
 
 			var allv = askvol + bidvol;
-			var volb = askvol/allv - bidvol/allv;
+			var volb = bidvol/allv - askvol/allv;
 
 			var volbLabel = toobar.find('.volbLabel');
 			volbLabel.text(r(volb, 10));
@@ -19,7 +19,8 @@
 		}
 
 		function refreshOrders(data) {
-			setOrders(parseFloat(data.ask_top), parseFloat(data.bid_top), data.ask_glass, data.bid_glass);
+			setOrders(parseFloat(data.ask_top), parseFloat(data.bid_top), 
+					parseFloat(data.ask_glass), parseFloat(data.bid_glass));
 		}
 
 		function refreshTrades(data) {
@@ -30,6 +31,14 @@
 			var tradeBalance = toobar.find('.tradeBalance');
 			tradeBalance.text(r(tradb, 10));
 			tradeBalance.css('color', tradb>=0?'#8e8eff':'red');
+		}
+
+		function onVolumes(a_data) {
+			var v = a_data[a_data.length - 1];
+			refreshTrades({
+				buy_volumes: v[1],
+				sell_volumes: v[2],
+			});
 		}
 
 		function setBalance(v1, v2) {
@@ -46,6 +55,9 @@
 		onEvent('MARKETPAIRORDERS', refreshOrders);
 		onEvent('MARKETPAIRTRADES', refreshTrades);
 		onEvent('EVENTRESPONSE', onUserEvents);
+		onEvent('LASTORDER_RESPONSE', refreshOrders);
+		onEvent('VOLUMES_RESPONSE', onVolumes);
+
 
 		pairListeners.push((a_pair)=>{
 			pair = a_pair;

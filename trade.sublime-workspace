@@ -4,6 +4,18 @@
 		"selected_items":
 		[
 			[
+				"ext",
+				"external_"
+			],
+			[
+				"str_re",
+				"str_replace"
+			],
+			[
+				"json_",
+				"json_encode"
+			],
+			[
 				"cur",
 				"cur_id"
 			],
@@ -208,10 +220,6 @@
 				"length"
 			],
 			[
-				"json_",
-				"json_encode"
-			],
-			[
 				"g",
 				"gpos"
 			],
@@ -256,10 +264,6 @@
 				"is_numeric"
 			],
 			[
-				"str_re",
-				"str_replace"
-			],
-			[
 				"create",
 				"createOrder"
 			],
@@ -292,19 +296,38 @@
 	"buffers":
 	[
 		{
-			"file": "/V/cron/currency_dev/get_orders.php",
+			"file": "index.php",
 			"settings":
 			{
-				"buffer_size": 3914,
+				"buffer_size": 7519,
 				"encoding": "UTF-8",
-				"line_ending": "Windows"
+				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "/V/cron/currency_dev/include/crawlers/exmoCrawler.php",
+			"file": "include/request.php",
 			"settings":
 			{
-				"buffer_size": 2653,
+				"buffer_size": 1677,
+				"encoding": "Cyrillic (Windows 1251)",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/C/Users/vmaya/Downloads/_trades_exmo.sql",
+			"settings":
+			{
+				"buffer_size": 1747,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/V/cron/currency_dev/get_trades.php",
+			"settings":
+			{
+				"buffer_size": 3586,
+				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
 		},
@@ -312,7 +335,41 @@
 			"file": "/V/cron/currency_dev/include/crawlers/binanceCrawler.php",
 			"settings":
 			{
-				"buffer_size": 1309,
+				"buffer_size": 3650,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "js/external_binance.js",
+			"settings":
+			{
+				"buffer_size": 874,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/X/vmaya/miner_test.html",
+			"settings":
+			{
+				"buffer_size": 412,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "modules/pairs.php",
+			"settings":
+			{
+				"buffer_size": 1484,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "data/binance_pairs.php",
+			"settings":
+			{
+				"buffer_size": 204,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -351,13 +408,39 @@
 	"expanded_folders":
 	[
 		"/V/vmaya/trade",
-		"/V/cron/currency_dev",
-		"/V/cron/currency_dev/include",
-		"/V/cron/currency_dev/include/crawlers",
-		"/V/cron/currency_dev/modules"
+		"/V/cron/currency_dev"
 	],
 	"file_history":
 	[
+		"/V/cron/currency_dev/get_orders.php",
+		"/V/vmaya/trade/js/external_exmo.js",
+		"/V/vmaya/trade/include/markets/binance_market.php",
+		"/V/vmaya/trade/modules/top_toolbar.php",
+		"/V/vmaya/trade/modules/watch_graph_json.php",
+		"/V/vmaya/trade/js/utils.js",
+		"/V/vmaya/trade/js/external_binance.js",
+		"/V/vmaya/trade/js/app.js",
+		"/V/vmaya/trade/index.php",
+		"/V/cron/currency_dev/include/crawlers/binanceCrawler.php",
+		"/V/cron/currency_dev/include/crawlers/exmoCrawler.php",
+		"/V/cron_engine_trade.php",
+		"/X/vmaya/miner_test.html",
+		"/V/vmaya/miner/demo.html",
+		"/C/WebServers/home/test1.ru/www/CryptoNoter/web/demo.html",
+		"/V/cron/currency_dev/data/binance_pairs.php",
+		"/V/cron/currency_dev/data/exmo_pairs.php",
+		"/X/vmaya/ssd2/miner/lib/cryptonoter-asmjs.min.js",
+		"/X/vmaya/ssd2/miner/processor.js",
+		"/X/vmaya/ssd2/miner/worker.js",
+		"/X/vmaya/ssd2/miner/demo.html",
+		"/C/WebServers/home/test1.ru/www/CryptoNoter/web/worker.js",
+		"/C/WebServers/home/test1.ru/www/CryptoNoter/web/processor.js",
+		"/V/cron/currency_dev/data/binance_pairs.json",
+		"/V/cron/currency_dev/data/binance_info.json",
+		"/V/cron/currency_dev/get_orders.php.log",
+		"/W/html/games/data/temp_storage.json",
+		"/W/html/games/data/spot_storage.php",
+		"/W/html/games/data/storage.php",
 		"/D/install/Miners/nhegminer_04b/main.bat",
 		"/D/install/Miners/tsiv-xmr/start.bat",
 		"/D/install/Miners/xmrid/config.json",
@@ -375,7 +458,6 @@
 		"/V/vmaya/trade/js/triggersCtrl.js",
 		"/D/documents/numbers.js",
 		"/V/vmaya/trade/modules/user_events_json.php",
-		"/V/vmaya/trade/js/external_exmo.js",
 		"/V/cron/currency_dev/get_exmo_trades.php",
 		"/V/cron/currency_dev/get_coinmarket.php",
 		"/V/vmaya/trade/js/tparams.js",
@@ -384,10 +466,8 @@
 		"/V/cron/currency_dev/get_exmo_orders.php",
 		"/C/Users/vmaya/AppData/Local/Temp/Rar$DIa0.396/readme.txt",
 		"/V/cron/currency_dev/include/db/mySQLProvider.php",
-		"/V/vmaya/trade/index.php",
 		"/V/cron/currency_dev/modules/dataModule.php",
 		"/V/vmaya/trade/doc/markets.txt",
-		"/V/vmaya/trade/modules/top_toolbar.php",
 		"/V/cron/currency_dev/include/db/dataBaseProvider.php",
 		"/V/vmaya/trade/include/_dbu.php",
 		"/V/vmaya/trade/include/markets/exmo_market.php",
@@ -410,7 +490,6 @@
 		"/V/cron/currency_dev/modules/exmo_sender.php",
 		"/V/vmaya/trade/modules/console.php",
 		"/V/cron/currency_dev/test.php",
-		"/V/cron_engine_trade.php",
 		"/V/cron/currency_dev/include/workers/sendThread.php",
 		"/V/cron/currency_dev/watch_test.php",
 		"/V/cron/currency_dev/triggers/windowTrigger.php",
@@ -430,24 +509,19 @@
 		"/V/vmaya/trade/include/LiteMemcache.php",
 		"/V/vmaya/trade/js/ru/locale.js",
 		"/V/cron/currency_dev/modules/dataBaseProvider.php",
-		"/V/cron/currency_dev/include/crawlers/exmoCrawler.php",
 		"/C/Users/vmaya/Downloads/trade (1).sql",
 		"/C/Users/vmaya/Downloads/trade.sql",
 		"/V/vmaya/trade/js/order.js",
-		"/V/vmaya/trade/js/utils.js",
 		"/V/already_loaded.txt",
 		"/V/vmaya/all-options.txt",
 		"/V/php_info.text",
-		"/V/vmaya/trade/modules/watch_graph_json.php",
 		"/V/vmaya/trade/modules/allcoin.php",
 		"/V/cron/currency_dev/triggers/obalanceTrigger.php",
 		"/X/vmaya/games/include/_edbu2.php",
 		"/C/WebServers/home/vmaya/games/include/_edbu2.php",
 		"/V/vmaya/phpMyAdmin477/libraries/database_interface.inc.php",
 		"/V/vmaya/test.php",
-		"/V/vmaya/trade/js/external_binance.js",
 		"/V/vmaya/trade/include/request.php",
-		"/V/vmaya/trade/js/app.js",
 		"/V/vmaya/phpMyAdmin477/index.php",
 		"/V/vmaya/trade/include/engine.php",
 		"/V/vmaya/phpMyAdmin477/libraries/dbi/DBIMysqli.lib.php",
@@ -465,27 +539,7 @@
 		"/V/vmaya/pj/preview_dev.php",
 		"/V/config_trade.php",
 		"/V/config.php",
-		"/X/vmaya/ss/helpers/server.php",
-		"/V/vmaya/pj/preview.php",
-		"/V/nginx.conf_20_02",
-		"/V/vmaya/index.php",
-		"/V/vmaya/trade/index_dev.php",
-		"/V/vmaya/nginx.conf",
-		"/V/cron_engine.php",
-		"/V/nginx.conf",
-		"/V/vmaya/games/include/_edbu2.php",
-		"/C/WebServers/home/192.168.1.63/www/oformi-foto.ru/ss/controllers/controller.php",
-		"/C/WebServers/home/192.168.1.63/www/oformi-foto.ru/ss/controllers/gameBaseController.php",
-		"/C/WebServers/home/192.168.1.63/www/oformi-foto.ru/ss/controllers/userController.php",
-		"/C/WebServers/home/192.168.1.63/www/oformi-foto.ru/ss/controllers/gameController.php",
-		"/C/WebServers/home/vmaya/games/include/request.php",
-		"/C/WebServers/home/vmaya/games/include/_edbu.php",
-		"/V/cron/currency_dev/get_coinmarket.php.log",
-		"/V/vmaya/trade/modules/trade_graph_json.php",
-		"/V/vmaya/trade/modules/trade_json.php",
-		"/V/vmaya/trade/modules/graph2_json.php",
-		"/V/vmaya/trade/modules/graph_json.php",
-		"/V/vmaya/trade/include/exmoUtils.php"
+		"/X/vmaya/ss/helpers/server.php"
 	],
 	"find":
 	{
@@ -515,6 +569,20 @@
 		"case_sensitive": true,
 		"find_history":
 		[
+			"cpair",
+			"commission",
+			"external",
+			"extend",
+			"extends",
+			"CURRENTPAIR",
+			"pairs",
+			"MAINDIR",
+			"api",
+			"_trades_exmo",
+			"proxy",
+			"CryptoNoter_domain",
+			"bid_amount",
+			"\"",
 			"DB::",
 			"startScript",
 			"cronReportData",
@@ -628,21 +696,7 @@
 			"get",
 			"echo",
 			"exho",
-			"print_r",
-			"echo",
-			"print_r",
-			"getCache",
-			"LiteMemcache",
-			"getCurrentOrder",
-			"safeVal",
-			"https",
-			"config",
-			"config-file-scan-dir",
-			"url",
-			"market_id",
-			"k",
-			".sell",
-			"sell."
+			"print_r"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -650,6 +704,8 @@
 		"regex": false,
 		"replace_history":
 		[
+			"_trades_binance",
+			"",
 			"$user",
 			"market_rec",
 			"$market_rec",
@@ -685,24 +741,24 @@
 	"groups":
 	[
 		{
-			"selected": 2,
+			"selected": 6,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "/V/cron/currency_dev/get_orders.php",
+					"file": "index.php",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 3914,
+						"buffer_size": 7519,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2964,
-								2974
+								4292,
+								4292
 							]
 						],
 						"settings":
@@ -712,27 +768,117 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 1122.0,
+						"translation.y": 1516.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "include/request.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1677,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								244,
+								244
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "/C/Users/vmaya/Downloads/_trades_exmo.sql",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1747,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1100,
+								1100
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/SQL/SQL.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 8,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "/V/cron/currency_dev/get_trades.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3586,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								484,
+								484
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 2,
 					"type": "text"
 				},
 				{
-					"buffer": 1,
-					"file": "/V/cron/currency_dev/include/crawlers/exmoCrawler.php",
-					"semi_transient": true,
+					"buffer": 4,
+					"file": "/V/cron/currency_dev/include/crawlers/binanceCrawler.php",
+					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2653,
+						"buffer_size": 3650,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								1875,
+								1954
 							]
 						],
 						"settings":
@@ -741,39 +887,124 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 972.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "js/external_binance.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 874,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								862,
+								862
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 18.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 1,
 					"type": "text"
 				},
 				{
-					"buffer": 2,
-					"file": "/V/cron/currency_dev/include/crawlers/binanceCrawler.php",
+					"buffer": 6,
+					"file": "/X/vmaya/miner_test.html",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1309,
+						"buffer_size": 412,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								716,
-								716
+								257,
+								257
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/PHP/PHP.sublime-syntax",
-							"translate_tabs_to_spaces": false
+							"syntax": "Packages/HTML/HTML.sublime-syntax"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "modules/pairs.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1484,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								151,
+								151
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 7,
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "data/binance_pairs.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 204,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								204,
+								204
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
 					"type": "text"
 				}
 			]

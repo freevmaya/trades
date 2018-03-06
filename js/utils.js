@@ -1,9 +1,9 @@
 var utils = new (function() {
-    this.minmaxCalc = (list, p)=>{
+    this.minmaxCalc = (list, pmin=1, pmax=2)=>{
         var minmax = [1000000000, 0]; 
         for (var i=0; i<list.length; i++) {
-            if (minmax[0] > list[i][p]) minmax[0] = list[i][p];
-            if (minmax[1] < list[i][p]) minmax[1] = list[i][p];                        
+            minmax[0] = Math.min(Math.min(list[i][pmin], list[i][pmax]), minmax[0]);
+            minmax[1] = Math.max(Math.max(list[i][pmin], list[i][pmax]), minmax[1]);
         }
         return minmax;
     } 
@@ -28,7 +28,7 @@ var utils = new (function() {
     }
 
     this.fillPairs = (pairsList, sel_pair)=>{
-        var pairs = external.getPairs();
+        var pairs = external.pairs;
         for (var i=0; i<pairs.length;i++) {
             var opt = $('<option value="' + pairs[i] + '">' + pairs[i] + '</option>');
             if (sel_pair == pairs[i]) opt.prop('selected', 'true');

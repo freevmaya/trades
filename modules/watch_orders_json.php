@@ -2,7 +2,7 @@
 	$method = $request->getVar('method');
 
 	function updateOrder() {
-		GLOBAL $ACTIVES, $request, $suser, $events, $market;
+		GLOBAL $ACTIVES, $request, $suser, $events, $market, $account;
 		$response = array('result'=>0);
 		if (($action = $request->getVar('action')) &&
 			($uid = $suser['uid']) &&
@@ -10,6 +10,7 @@
 			($state = $request->getVar('state')) &&
 			($volume = $request->getVar('volume'))) {
 
+			$account_id = $suser['account_id'];
 			$market_id = $market['id']; 
 			$id = $request->getVar('id');
 			$take_profit = $request->getVar('take_profit', 0);
@@ -21,20 +22,20 @@
 				$triggers_json = json_encode($triggers, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES);
 
 			if ($id) {
-				if ($rec = DB::line("SELECT * FROM _watch_orders WHERE id={$id} AND uid={$uid}")) {
+				if ($rec = DB::line("SELECT * FROM _watch_orders WHERE id={$id}")) {
 					$prev_action = json_decode($rec['action']);
 					$state_update = "`state`='{$state}'";
 					if ($prev_action['state'] != $state) {
 						$state_update .= ", `state_time`=NOW(), `triggers_state`=''";
 					}
 
-					$query = "UPDATE _watch_orders SET {$state_update}, `pair`='{$pair}', `market_id`={$market_id}, `volume`='{$volume}', `action`='{$action}', `triggers`='{$triggers_json}', `take_profit`={$take_profit}, `stop_loss`={$stop_loss} WHERE id={$id} AND uid={$uid}";
+					$query = "UPDATE _watch_orders SET {$state_update}, `pair`='{$pair}', `market_id`={$market_id}, `volume`='{$volume}', `action`='{$action}', `triggers`='{$triggers_json}', `take_profit`={$take_profit}, `stop_loss`={$stop_loss} WHERE id={$id} AND account_id={$account_id}";
 				}
 			}
 			if (!isset($query)) 
-				$query = "INSERT INTO _watch_orders (`uid`, `pair`, `market_id`, `volume`, `state_time`, `create_time`, `state`, `action`, `triggers`, ".
+				$query = "INSERT INTO _watch_orders (`account_id`, `pair`, `market_id`, `volume`, `state_time`, `create_time`, `state`, `action`, `triggers`, ".
 					"`take_profit`, `stop_loss`) ".
-					"VALUES ({$uid}, '{$pair}', {$market_id}, '{$volume}', NOW(), NOW(), '{$state}', '{$action}', '{$triggers_json}', {$take_profit}, {$stop_loss})";
+					"VALUES ({$account_id}, '{$pair}', {$market_id}, '{$volume}', NOW(), NOW(), '{$state}', '{$action}', '{$triggers_json}', {$take_profit}, {$stop_loss})";
 
 			$response['result'] = DB::query($query)?1:0;
 			if (!$id) $id = DB::lastID();
@@ -59,8 +60,8 @@
 	function getList() {
 		GLOBAL $ACTIVES, $request, $suser, $market;
 		$result = array();
-		if ($uid = $suser['uid']) {
-			$where = "uid={$uid} AND market_id={$market['id']}";
+		if ($account_id = $suser['account_id']) {
+			$where = "account_id={$account_id} AND market_id={$market['id']}";
 			if ($pair = $request->getVar('pair')) {
 				$where .= " AND `pair`='{$pair}'";
 			}

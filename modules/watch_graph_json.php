@@ -3,6 +3,12 @@
 
     define("QUANTPERSEC", 30);
 
+    function lastOrders($cur_in, $cur_out) {
+        GLOBAL $request, $market;
+        return DB::line("SELECT ask_top, bid_top, ask_glass, bid_glass, `time` FROM _orders_{$market['name']} ".
+                    "WHERE cur_in={$cur_in} AND cur_out={$cur_out} ORDER BY id DESC LIMIT 0, 1" );
+    }
+
 
     function asLine() {
         GLOBAL $request, $market;
@@ -29,6 +35,7 @@
             "WHERE cur_in={$cur_in} AND cur_out={$cur_out} AND ".
             "`time` >= '{$timeStart}' AND `time` <= '{$timeEnd}' GROUP BY `t` ORDER BY `t`";
             
+        //echo $query;
         $trade = DB::asArray($query, null, true);
         $result = array();
         $volumes = array();
@@ -40,7 +47,7 @@
             $volumes[]  = array($time, $item['buy_volumes'], $item['sell_volumes']);
         }
 
-        return array('trade'=>$result, 'volumes'=>$volumes);
+        return array('trade'=>$result, 'volumes'=>$volumes, 'last_orders'=>lastOrders($cur_in, $cur_out));
     }
 
     function asCandle() {
@@ -88,7 +95,10 @@
             $prev_close = $item['close_price'];
         }
 
-        return array('trade'=>$result, 'volumes'=>$volumes);
+        $last_orders = DB::line("SELECT ask_top, bid_top, ask_glass, bid_glass FROM _orders_{$market['name']} ".
+                    "WHERE cur_in={$cur_in} AND cur_out={$cur_out} LIMIT 0, 1" );
+
+        return array('trade'=>$result, 'volumes'=>$volumes, 'last_orders'=>lastOrders($cur_in, $cur_out));
     }
 
     $method = $request->getVar('method');

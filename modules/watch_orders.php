@@ -18,7 +18,7 @@
 			var ca = pair.split('_');
 			if (e.data.length == 3) {
 				var avg = (e.data[1] + e.data[2]) / 2;
-				This.edit({pair: pair, action: 'buy', state: 'active', volume: '50%/' + ca[1], triggers: {stop: {value: avg}}});
+				This.edit({pair: pair, action: 'buy', state: 'active', volume: '50%/' + ca[1], triggers: {stop: {value: r(avg)}}});
 			} else {
 				var cd = e.data[3] - e.data[2];
 				var avg = (e.data[3] + e.data[2]) / 2;
@@ -32,7 +32,7 @@
 			        	},
 			        	time: 30 * e.quant
 					},
-					stop: {value: avg}
+					stop: {value: r(avg)}
 				}});
 			}
 		});
@@ -41,7 +41,7 @@
 			if (lastDlg) lastDlg.setPrice(e.price);
 			else {
 				var ca = pair.split('_');
-				This.edit({pair: pair, action: 'buy', state: 'active', volume: '50%/' + ca[1], triggers: {stop: {value: e.price}}});
+				This.edit({pair: pair, action: 'buy', state: 'active', volume: '50%/' + ca[1], triggers: {stop: {value: r(e.price)}}});
 			}
 		});
 
